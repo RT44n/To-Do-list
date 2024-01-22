@@ -11,8 +11,15 @@ const projects = () => {
       name: "default",
       list: [],
     },
+    {
+      name: "torch",
+      list: [],
+    },
   ];
-  const getProjectList = (index) => projectList[index].list; ///<<<<<
+  const getProjectList = (index) => {
+    let objInd = index;
+    return projectList[objInd].list;
+  }; ///<<<<<
   const getAllLists = () =>
     projectList.forEach((obj) => {
       console.log(obj.list);

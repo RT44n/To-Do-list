@@ -25,23 +25,22 @@ const screenController = () => {
   };
 
   const clickHandlerBoard = (event) => {
-    event.preventDefaut();
+    event.preventDefault();
     let taskFormData = {
-      title: this.userTitle.value,
-      description: this.userDescription.value,
-      dueDate: this.userDueDate.value,
-      priority: this.userPriority.value,
-      notes: this.userNotes.value,
+      title: taskForm.elements["userTitle"].value,
+      description: taskForm.elements["userDescription"].value,
+      dueDate: taskForm.elements["userDueDate"].value,
+      priority: taskForm.elements["userPriority"].value,
+      notes: taskForm.elements["userNotes"].value,
     };
+    let projectIndex = 0;
 
-    let userProject = 0;
-
-    let project = parseInt(userProject);
-
-    myNewList.addTaskToProject(taskFormData, project);
-    this.reset();
+    myNewList.addTaskToProject(taskFormData, projectIndex);
+    taskForm.reset();
     updateScreen();
     myNewList.getAllLists(); //<<<<<<<<<<<<
   };
+  taskForm.addEventListener("submit", clickHandlerBoard);
 };
+
 screenController();
