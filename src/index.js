@@ -1,33 +1,5 @@
-class ToDo {
-  constructor(title, description, dueDate, priority, notes) {
-    this.title = title;
-    this.description = description;
-    this.dueDate = dueDate;
-    this.priority = priority;
-    this.notes = notes;
-  }
-}
+import { addToList } from "./taskModifier";
 
-const createProject = (name) => {
-  this.name = name;
-  this.list = [];
-};
-
-const addToList = () => {
-  const currentList = createList();
-
-  const addToDo = (input) => {
-    let getToDoList = input;
-    const title = Object.values(getToDoList)[0];
-    const description = Object.values(getToDoList)[1];
-    const dueDate = Object.values(getToDoList)[2];
-    const priority = Object.values(getToDoList)[3];
-    const notes = Object.values(getToDoList)[4];
-    const toDo = new ToDo(title, description, dueDate, priority, notes);
-    currentList.getList().push(toDo);
-  };
-  return { addToDo, getList: currentList.getList };
-};
 const screenController = () => {
   const myNewList = addToList();
 
@@ -38,7 +10,7 @@ const screenController = () => {
     let userPriority = prompt("What's the priority?");
     let userNotes = prompt("Any notes?");
 
-    let todoObj = {
+    let taskObj = {
       title: userTitle,
       description: userDescription,
       dueDate: userDueDate,
@@ -46,12 +18,14 @@ const screenController = () => {
       notes: userNotes,
     };
 
-    myNewList.addToDo(todoObj);
+    myNewList.addTask(taskObj);
 
-    console.log(myNewList.getList());
+    console.log(myNewList.getTaskList());
   };
 
-  const addButton = document.querySelector(".add");
+  const addButton = document.createElement("button");
+  document.body.append(addButton);
+  addButton.textContent = "Add Task";
   addButton.addEventListener("click", clickHandlerBoard);
 };
 
