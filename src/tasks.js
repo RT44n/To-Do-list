@@ -12,7 +12,7 @@ class Task {
 
 const createTask = () => {
   let taskList = projects();
-  const getTaskList = (index) => taskList.getProjectList(index);
+  const getTaskList = (index) => taskList.getProjectList(index); // <<<<<<<<
 
   return { getTaskList };
 };

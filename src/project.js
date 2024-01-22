@@ -12,7 +12,7 @@ const projects = () => {
       list: [],
     },
   ];
-  const getProjectList = (index) => projectList[index].list;
+  const getProjectList = (index) => projectList[index].list; ///<<<<<
   return { getProjectList };
 };
 

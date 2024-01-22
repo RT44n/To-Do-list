@@ -20,7 +20,7 @@ const screenController = () => {
     };
     let project = parseInt(userProject);
 
-    myNewList.addTaskToProject(taskObj, project);
+    myNewList.addTaskToProject(taskObj, project); //<<<<<<<<<<<<
 
     console.log(myNewList.getTaskList());
   };
