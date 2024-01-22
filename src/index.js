@@ -9,6 +9,7 @@ const screenController = () => {
     let userDueDate = prompt("What's the due date?");
     let userPriority = prompt("What's the priority?");
     let userNotes = prompt("Any notes?");
+    let userProject = prompt("Default");
 
     let taskObj = {
       title: userTitle,
@@ -17,8 +18,9 @@ const screenController = () => {
       priority: userPriority,
       notes: userNotes,
     };
+    let project = parseInt(userProject);
 
-    myNewList.addTask(taskObj);
+    myNewList.addTaskToProject(taskObj, project);
 
     console.log(myNewList.getTaskList());
   };

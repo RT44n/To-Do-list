@@ -7,6 +7,8 @@ module.exports = {
     index: "./src/index.js",
     tasks: "./src/tasks.js",
     taskModifier: "./src/taskModifier.js",
+    project: "./src/project.js",
+    projectModifier: "./src/projectModifier.js",
   },
   devtool: "inline-source-map",
 

@@ -1,3 +1,5 @@
+import { projects } from "./project";
+
 class Task {
   constructor(title, description, dueDate, priority, notes) {
     this.title = title;
@@ -9,8 +11,9 @@ class Task {
 }
 
 const createTask = () => {
-  const taskList = [];
-  const getTaskList = () => taskList;
+  let taskList = projects();
+  const getTaskList = (index) => taskList.getProjectList(index);
+
   return { getTaskList };
 };
 
