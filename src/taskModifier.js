@@ -1,8 +1,8 @@
 import { Task } from "./tasks";
-import { createTask } from "./tasks";
+import { projects } from "./project";
 
 const addToList = () => {
-  const newTaskList = createTask();
+  const newTaskList = projects();
 
   const addTaskToProject = (inputTask, inputProject) => {
     let currentTask = inputTask;
@@ -13,12 +13,12 @@ const addToList = () => {
     const priority = Object.values(currentTask)[3];
     const notes = Object.values(currentTask)[4];
     const task = new Task(title, description, dueDate, priority, notes);
-    newTaskList.getTaskList(inputProject).push(task); //<<<<<<<<<
+    newTaskList.getProjectList(inputProject).push(task); //<<<<<<<<<
   };
   return {
     addTaskToProject,
-    getTaskList: newTaskList.getTaskList,
-    allTasks: newTaskList.allTasks,
+    getTaskList: newTaskList.getProjectList,
+    getAllLists: newTaskList.getAllLists,
   };
 };
 

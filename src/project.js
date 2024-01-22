@@ -11,9 +11,14 @@ const projects = () => {
       name: "default",
       list: [],
     },
+    {
+      name: "torch",
+      list: ["hi"],
+    },
   ];
   const getProjectList = (index) => projectList[index].list; ///<<<<<
-  return { getProjectList };
+  const getAllLists = () => projectList.list;
+  return { getProjectList, getAllLists };
 };
 
 export { Project, projects };
