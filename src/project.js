@@ -11,13 +11,12 @@ const projects = () => {
       name: "default",
       list: [],
     },
-    {
-      name: "torch",
-      list: ["hi"],
-    },
   ];
   const getProjectList = (index) => projectList[index].list; ///<<<<<
-  const getAllLists = () => projectList.list;
+  const getAllLists = () =>
+    projectList.forEach((obj) => {
+      console.log(obj.list);
+    });
   return { getProjectList, getAllLists };
 };
 

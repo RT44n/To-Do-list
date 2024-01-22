@@ -1,33 +1,47 @@
 import { addToList } from "./taskModifier";
+import "./index.css";
 
 const screenController = () => {
   const myNewList = addToList();
+  const taskForm = document.forms["task-form"];
+  const taskHolder = document.querySelector(".taskHolder");
 
-  const clickHandlerBoard = () => {
-    let userTitle = prompt("What's the title?");
-    let userDescription = prompt("What's the description?");
-    let userDueDate = prompt("What's the due date?");
-    let userPriority = prompt("What's the priority?");
-    let userNotes = prompt("Any notes?");
-    let userProject = prompt("Default");
+  const updateScreen = () => {
+    taskHolder.textContent = "";
 
-    let taskObj = {
-      title: userTitle,
-      description: userDescription,
-      dueDate: userDueDate,
-      priority: userPriority,
-      notes: userNotes,
-    };
-    let project = parseInt(userProject);
+    const list = myNewList.getTaskList();
+    list.forEach((taskObj) => {
+      const taskCard = document.createElement("div");
+      taskCard.classList.toggle("taskCard");
+      taskHolder.append(taskCard);
 
-    myNewList.addTaskToProject(taskObj, project);
-    console.log(myNewList.getAllLists()); //<<<<<<<<<<<<
+      for (let i = 0; i < 5; i++) {
+        const taskInfo = document.createElement("p");
+        taskInfo.dataset.task = i;
+        taskInfo.textContent = Object.values(taskObj)[i];
+        taskCard.append(taskInfo);
+      }
+    });
   };
 
-  const addButton = document.createElement("button");
-  document.body.append(addButton);
-  addButton.textContent = "Add Task";
-  addButton.addEventListener("click", clickHandlerBoard);
-};
+  const clickHandlerBoard = (event) => {
+    event.preventDefaut();
+    let taskFormData = {
+      title: this.userTitle.value,
+      description: this.userDescription.value,
+      dueDate: this.userDueDate.value,
+      priority: this.userPriority.value,
+      notes: this.userNotes.value,
+    };
 
+    let userProject = 0;
+
+    let project = parseInt(userProject);
+
+    myNewList.addTaskToProject(taskFormData, project);
+    this.reset();
+    updateScreen();
+    myNewList.getAllLists(); //<<<<<<<<<<<<
+  };
+};
 screenController();
