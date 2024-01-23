@@ -16,10 +16,13 @@ const projects = () => {
       list: [],
     },
   ];
-  const getProjectList = (index) => {
-    let objInd = index;
-    return projectList[objInd].list;
-  }; ///<<<<<
+  const getProjectList = (indexobj) => {
+    console.log(indexobj);
+    let index = indexobj;
+    console.log(index);
+    projectList[index].list;
+  };
+  ///<<<<<
   const getAllLists = () =>
     projectList.forEach((obj) => {
       console.log(obj.list);

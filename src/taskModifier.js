@@ -3,10 +3,10 @@ import { projects } from "./project";
 
 const addToList = () => {
   const newTaskList = projects();
-
   const addTaskToProject = (inputTask, inputIndex) => {
     let currentTask = inputTask;
     let currentProject = inputIndex;
+    console.log(currentProject);
 
     const title = Object.values(currentTask)[0];
     const description = Object.values(currentTask)[1];

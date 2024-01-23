@@ -34,6 +34,7 @@ const screenController = () => {
       notes: taskForm.elements["userNotes"].value,
     };
     let projectIndex = 0;
+    console.log(projectIndex);
 
     myNewList.addTaskToProject(taskFormData, projectIndex);
     taskForm.reset();
