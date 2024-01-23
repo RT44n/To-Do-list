@@ -9,8 +9,9 @@ const screenController = () => {
   const updateScreen = () => {
     taskHolder.textContent = "";
 
-    let list = [];
-    list = myNewList.getAllLists();
+    console.log(myNewList.getAllLists());
+
+    let list = myNewList.getAllLists();
     console.log(list);
     list.forEach((taskObj) => {
       const taskCard = document.createElement("div");

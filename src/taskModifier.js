@@ -13,7 +13,8 @@ const addToList = () => {
     const priority = Object.values(currentTask)[3];
     const notes = Object.values(currentTask)[4];
     const task = new Task(title, description, dueDate, priority, notes);
-    newTaskList.getProjectList(inputProject).push(task); //<<<<<<<<<
+    newTaskList.getProjectList(inputProject).push(task);
+    console.log(newTaskList.getProjectList(inputProject)); //<<<<<<<<<
   };
   return {
     addTaskToProject,
