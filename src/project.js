@@ -20,7 +20,7 @@ const projects = () => {
     console.log(indexobj);
     let index = indexobj;
     console.log(index);
-    projectList[index].list;
+    return projectList[index].list;
   };
   ///<<<<<
   const getAllLists = () =>
