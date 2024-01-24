@@ -9,7 +9,15 @@ const projects = () => {
   const projectList = [
     {
       name: "default",
-      list: [],
+      list: [
+        {
+          message: "hiiiiiii",
+          message2: "byeee",
+          message3: "crryyyy",
+          message4: "heyheyhey",
+          message5: "naynayany",
+        },
+      ],
     },
     {
       name: "Urgent",
