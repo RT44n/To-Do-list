@@ -13,8 +13,11 @@
       </div>
       <div class="main">
         <div class="projectHolder"></div>
-        <div class="taskForm">
-          <form method="post" class="form" name="task-form">
+      </div>
+      <div class="taskHolder"></div>
+      <div class="addTaskContainer">
+        <dialog class="taskForm">
+          <form method="dialog" class="form" name="task-form">
             <label for="userTitle">Title:</label>
             <input type="text" name="userTitle" id="userTitle" />
             <label for="userDescription">Descritpion</label>
@@ -31,8 +34,7 @@
             <input type="text" name="userNotes" id="userNotes" />
             <button name="submit" type="submit">Submit</button>
           </form>
-          <div class="taskHolder"></div>
-        </div>
+        </dialog>
       </div>
     </div>
   </body>

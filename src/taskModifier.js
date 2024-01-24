@@ -1,5 +1,6 @@
 import { Task } from "./tasks";
 import { projects } from "./project";
+import { Project } from "./project";
 
 const addToList = () => {
   const newTaskList = projects();
@@ -16,10 +17,20 @@ const addToList = () => {
     newTaskList.getProjectList(inputProject).push(task);
     console.log(newTaskList.getProjectList(inputProject)); //<<<<<<<<<
   };
+
+  const addProjectToList = (input) => {
+    let currentProject = input;
+    const title = Object.values(currentProject)[0];
+    const project = new Project(title);
+    newTaskList.getProject().push(project);
+    console.log(newTaskList.getProject());
+  };
   return {
     addTaskToProject,
+    addProjectToList,
     getTaskList: newTaskList.getProjectList,
     getAllLists: newTaskList.getAllLists,
+    getProjectNames: newTaskList.getProjectNames,
   };
 };
 

@@ -11,11 +11,30 @@ const projects = () => {
       name: "default",
       list: [],
     },
+    {
+      name: "Urgent",
+      list: [],
+    },
   ];
+  const getProject = () => projectList;
   const getProjectList = (index) => projectList[index].list; ///<<<<<
-  const getAllLists = () => projectList.forEach((obj) => obj.list);
+  const getAllLists = () => {
+    let a = [];
+    projectList.forEach(function (obj) {
+      a.push(obj.list);
+    });
+    return a;
+  };
 
-  return { getProjectList, getAllLists };
+  const getProjectNames = () => {
+    let a = [];
+    projectList.forEach(function (obj) {
+      a.push(obj.name);
+    });
+    return a;
+  };
+
+  return { getProjectList, getAllLists, getProjectNames, getProject };
 };
 
 export { Project, projects };

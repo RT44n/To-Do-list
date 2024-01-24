@@ -26,17 +26,46 @@ body, html{
 }
 
 .projectHolder{
+    display: grid;
+    grid-template-rows: repeat(10, 75px);
+    gap: 20px;
     height: 100%;
     width: 15%;
+    padding: 5px;
 
-    background-color: orange;
+    background-color: black;
+}
+
+.projectCard{
+    display: flex;
+    justify-content: center;
+   
+    align-items: center;
+    padding: 5px;
+  
+    border-radius: 10px;
+
+    background-color: white;
+}
+
+#projectTitle{
+    font-size: 2rem;
+}
+
+.taskHolder{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    background-color: white;
 }
 
 .taskForm{
     display: flex;
     flex-direction: column;
 
-    width: 200px;
+    width: auto;
+    height: auto;
 
     color: white;
     background-color: blue;
