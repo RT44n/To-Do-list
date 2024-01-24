@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-Do-List</title>
     <link rel="stylesheet" href="index.css" />
-    <script defer src="index.bundle.js"></script>
-  </head>
+  <script defer src="index.bundle.js"></script></head>
   <body>
     <div class="fullPage">
       <div class="header">
@@ -14,27 +13,25 @@
       </div>
       <div class="main">
         <div class="projectHolder"></div>
-        <div class="addTaskContainer">
-          <dialog class="taskForm">
-            <form method="dialog" class="form" name="task-form">
-              <label for="userTitle">Title:</label>
-              <input type="text" name="userTitle" id="userTitle" />
-              <label for="userDescription">Descritpion</label>
-              <input type="text" name="userDescription" id="userDescription" />
-              <label for="userDueDate">Due Date:</label>
-              <input type="date" name="userDueDate" id="userDueDate" />
-              <label for="userPriority">Priority</label>
-              <select name="userPriority" id="userPriority">
-                <option value="High">High</option>
-                <option value="Medium">Medium</option>
-                <option value="low">Low</option>
-              </select>
-              <label for="userNotes">Notes:</label>
-              <input type="text" name="userNotes" id="userNotes" />
-              <button name="submit" type="submit">Submit</button>
-            </form>
-          </dialog>
-        </div>
+        <dialog class="taskFormHolder">
+          <form method="dialog" class="taskForm" name="task-form">
+            <label for="userTitle">Title:</label>
+            <input type="text" name="userTitle" id="userTitle" />
+            <label for="userDescription">Descritpion</label>
+            <input type="text" name="userDescription" id="userDescription" />
+            <label for="userDueDate">Due Date:</label>
+            <input type="date" name="userDueDate" id="userDueDate" />
+            <label for="userPriority">Priority</label>
+            <select name="userPriority" id="userPriority">
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+            <label for="userNotes">Notes:</label>
+            <input type="text" name="userNotes" id="userNotes" />
+            <button name="submit" type="submit">Submit</button>
+          </form>
+        </dialog>
         <div class="taskHolder"></div>
       </div>
     </div>

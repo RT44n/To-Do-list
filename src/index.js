@@ -3,19 +3,21 @@ import "./index.css";
 
 const screenController = () => {
   const myNewList = addToList();
-  //const taskForm = document.forms["task-form"];
+  const taskForm = document.forms["task-form"];
   const taskHolder = document.querySelector(".taskHolder");
   const projectHolder = document.querySelector(".projectHolder");
 
   const updateScreen = () => {
-    taskHolder.textContent = "";
+    taskHolder.innerHTML = "";
 
     console.log(myNewList.getAllLists());
+    console.log(myNewList.getTaskList(0));
 
-    let list = myNewList.getAllLists();
-    console.log(list);
-    list.forEach((taskarray) => {
-      taskarray.forEach((taskObj) => {
+    const taskDisplayer = (number) => {
+      taskHolder.textContent = "";
+      let list = myNewList.getTaskList(number);
+      console.log(list);
+      list.forEach((taskarray) => {
         const taskCard = document.createElement("div");
         taskCard.classList.toggle("taskCard");
         taskHolder.append(taskCard);
@@ -24,29 +26,32 @@ const screenController = () => {
           const taskInfo = document.createElement("p");
           taskInfo.dataset.task = i;
           taskInfo.textContent =
-            Object.keys(taskObj)[i] + " - " + Object.values(taskObj)[i];
+            Object.keys(taskObj)[i] + " - " + Object.values(taskarray)[i];
           taskCard.append(taskInfo);
         }
       });
-    });
-    const addNewTask = document.createElement("button");
-    addNewTask.textContent = "Add Task";
-    addNewTask.classList.toggle("newTaskButton");
-    taskHolder.append(addNewTask);
-    projectHolder.textContent = "";
+      const addNewTask = document.createElement("button");
+      addNewTask.textContent = "Add Task";
+      addNewTask.classList.toggle("newTaskButton");
+      taskHolder.append(addNewTask);
+      projectHolder.textContent = "";
+    };
+    taskDisplayer(0);
 
     let projectList = myNewList.getProjectNames();
     console.log(projectList);
     projectList.forEach((projectObj) => {
       const projectCard = document.createElement("div");
       projectCard.classList.toggle("projectCard");
-      projectCard.dataset.index = projectList.indexOf(projectObj);
+      let projectPosition = projectList.indexOf(projectObj);
+      projectCard.dataset.index = projectPosition;
       projectHolder.append(projectCard);
 
       const ProjectName = document.createElement("p");
       ProjectName.textContent = projectObj;
       ProjectName.setAttribute("id", "projectTitle");
       projectCard.append(ProjectName);
+      projectCard.addEventListener("click", taskDisplayer(projectPosition));
     });
     const addProjectButton = document.createElement("button");
     addProjectButton.textContent = "Add New Project";
@@ -80,7 +85,7 @@ const screenController = () => {
     myNewList.addProjectToList(projectFormData);
     updateScreen();
   };
-  // taskForm.addEventListener("submit", clickHandlerBoard);
+  taskForm.addEventListener("submit", clickHandlerBoard);
   updateScreen();
 };
 screenController();
