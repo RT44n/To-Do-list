@@ -15,19 +15,19 @@ const projects = () => {
   const getProject = () => projectList;
   const getProjectList = (index) => projectList[index].list; ///<<<<<
   const getAllLists = () => {
-    let a = [];
+    let result = [];
     projectList.forEach(function (obj) {
-      a.push(obj.list);
+      result.push(obj.list);
     });
-    return a;
+    return result;
   };
 
   const getProjectNames = () => {
-    let a = [];
+    let result = [];
     projectList.forEach(function (obj) {
-      a.push(obj.name);
+      result.push(obj.name);
     });
-    return a;
+    return result;
   };
 
   return { getProjectList, getAllLists, getProjectNames, getProject };

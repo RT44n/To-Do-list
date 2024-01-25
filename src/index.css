@@ -55,6 +55,8 @@ body, html{
 .taskHolder{
     display: grid;
     width: 100%;
+    padding: 8px;
+    gap: 8px;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(4, 1fr);
     background-color: white;
@@ -69,4 +71,14 @@ body, html{
 
     color: white;
     background-color: blue;
+}
+
+.taskCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 4px;
+    background-color: orange;
+    border-radius: 15px;
 }
