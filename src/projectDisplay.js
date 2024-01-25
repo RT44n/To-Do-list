@@ -1,10 +1,9 @@
 import { taskDisplayController } from "./displayTasks";
-import { addToList } from "./taskModifier";
 
 const ProjectDisplayHandler = () => {
   const projectHolder = document.querySelector(".projectHolder");
   const taskDisplay = taskDisplayController();
-  const myNewList = addToList();
+  const myNewList = taskDisplay.myNewList;
   const projectUpdateScreen = () => {
     let projectList = myNewList.getProjectNames();
     console.log(projectList);
@@ -41,7 +40,7 @@ const ProjectDisplayHandler = () => {
     projectUpdateScreen();
   };
 
-  return { projectUpdateScreen };
+  return { projectUpdateScreen, myNewList };
 };
 
 export { ProjectDisplayHandler };
