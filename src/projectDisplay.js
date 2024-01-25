@@ -1,9 +1,8 @@
-import { addToList } from "./taskModifier";
 import { taskDisplayController } from "./displayTasks";
 
 const ProjectDisplayHandler = () => {
   const projectHolder = document.querySelector(".projectHolder");
-  const myNewList = addToList();
+  const myNewList = taskDisplayController();
   let projectList = myNewList.getProjectNames();
   console.log(projectList);
   projectHolder.innerHTML = "";
@@ -19,10 +18,9 @@ const ProjectDisplayHandler = () => {
     ProjectName.setAttribute("id", "projectTitle");
     projectCard.append(ProjectName);
     projectCard.addEventListener("click", () => {
-      taskDisplayController(projectPosition);
+      myNewList.taskDisplayer(projectPosition);
     });
   });
-  return { myNewList: addToList() };
 };
 
 export { ProjectDisplayHandler };

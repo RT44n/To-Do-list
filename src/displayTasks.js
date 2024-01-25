@@ -1,6 +1,6 @@
 import { addToList } from "./taskModifier";
 
-const taskDisplayController = (input) => {
+const taskDisplayController = () => {
   const taskHolder = document.querySelector(".taskHolder");
   const myNewList = addToList();
 
@@ -26,7 +26,8 @@ const taskDisplayController = (input) => {
     addNewTask.classList.toggle("newTaskButton");
     taskHolder.append(addNewTask);
   };
-  taskDisplayer(input);
+
+  return { myNewList, taskDisplayer };
 };
 
 export { taskDisplayController };
