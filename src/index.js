@@ -5,14 +5,11 @@ import { ProjectDisplayHandler } from "./projectDisplay";
 const screenController = () => {
   const myNewList = addToList();
   const taskForm = document.forms["task-form"];
-  const projectHolder = document.querySelector(".projectHolder");
+  //const projectHolder = document.querySelector(".projectHolder");
 
   const updateScreen = () => {
-    ProjectDisplayHandler();
-    const addProjectButton = document.createElement("button");
-    addProjectButton.textContent = "Add New Project";
-    projectHolder.append(addProjectButton);
-    addProjectButton.addEventListener("click", addProjectHandler);
+    let projectDisplay = ProjectDisplayHandler();
+    projectDisplay.projectUpdateScreen();
   };
 
   const clickHandlerBoard = (event) => {
@@ -32,15 +29,7 @@ const screenController = () => {
     updateScreen();
     myNewList.getAllLists(); //<<<<<<<<<<<<
   };
-  const addProjectHandler = () => {
-    const name = prompt("What's the project name?");
 
-    let projectFormData = {
-      title: name,
-    };
-    myNewList.addProjectToList(projectFormData);
-    updateScreen();
-  };
   taskForm.addEventListener("submit", clickHandlerBoard);
   updateScreen();
 };

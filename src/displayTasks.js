@@ -27,7 +27,7 @@ const taskDisplayController = () => {
     taskHolder.append(addNewTask);
   };
 
-  return { myNewList, taskDisplayer };
+  return { myNewList: addToList(), taskDisplayer };
 };
 
 export { taskDisplayController };
