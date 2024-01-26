@@ -35,6 +35,7 @@ const addToList = () => {
     getTaskList: newTaskList.getProjectList,
     getAllLists: newTaskList.getAllLists,
     getProjectNames: newTaskList.getProjectNames,
+    getProject: newTaskList.getProject,
   };
 };
 

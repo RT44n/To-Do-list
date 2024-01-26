@@ -1,9 +1,27 @@
 import { taskDisplayController } from "./displayTasks";
+import { getFromStorage } from "./storage";
+import { storageAvailable } from "./storage";
 
 const ProjectDisplayHandler = () => {
   const projectHolder = document.querySelector(".projectHolder");
   const taskDisplay = taskDisplayController();
   const myNewList = taskDisplay.myNewList;
+
+  let checklocalStorage;
+  const checkStorage = () => {
+    if (storageAvailable("localStorage")) {
+      return (checklocalStorage = getFromStorage());
+    } else return;
+  };
+  checkStorage();
+  if (checklocalStorage !== null) {
+    myNewList
+      .getProject()
+      .splice(0, myNewList.getProject().length, ...checklocalStorage);
+  }
+
+  console;
+
   const projectUpdateScreen = () => {
     let projectList = myNewList.getProjectNames();
     console.log(projectList);
@@ -37,6 +55,8 @@ const ProjectDisplayHandler = () => {
       title: name,
     };
     myNewList.addProjectToList(projectFormData);
+    localStorage.setItem("Projects", JSON.stringify(myNewList.getProject()));
+    console.log(JSON.stringify(myNewList.getProject()));
     projectUpdateScreen();
   };
 

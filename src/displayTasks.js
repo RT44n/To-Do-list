@@ -85,6 +85,8 @@ const taskDisplayController = () => {
     myNewList.addTaskToProject(taskFormData, project);
     taskForm.reset();
     taskFormModal.close();
+    localStorage.setItem("Projects", JSON.stringify(myNewList.getProject()));
+    console.log(JSON.stringify(myNewList.getProject()));
     taskDisplayer(project);
   };
   function removeTaskHandler() {
@@ -95,12 +97,14 @@ const taskDisplayController = () => {
     console.log(taskPosition);
     myNewList.removeTaskFromProject(taskPosition, projectPosition);
     taskModal.close();
+    localStorage.setItem("Projects", JSON.stringify(myNewList.getProject()));
+    console.log(JSON.stringify(myNewList.getProject()));
     taskDisplayer(projectPosition);
   }
 
   taskForm.addEventListener("submit", taskFormHandler);
 
-  return { myNewList, taskDisplayer };
+  return { myNewList, taskDisplayer, getProject: myNewList.getProject };
 };
 
 export { taskDisplayController };
