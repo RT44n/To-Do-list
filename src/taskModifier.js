@@ -25,9 +25,13 @@ const addToList = () => {
     newTaskList.getProject().push(project);
     console.log(newTaskList.getProject());
   };
+  const removeTaskFromProject = (inputTaskIndex, inputProjectIndex) => {
+    newTaskList.getProjectList(inputProjectIndex).splice(inputTaskIndex, 1);
+  };
   return {
     addTaskToProject,
     addProjectToList,
+    removeTaskFromProject,
     getTaskList: newTaskList.getProjectList,
     getAllLists: newTaskList.getAllLists,
     getProjectNames: newTaskList.getProjectNames,

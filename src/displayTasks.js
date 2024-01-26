@@ -10,6 +10,7 @@ const taskDisplayController = () => {
     let list = myNewList.getTaskList(input);
     console.log(list);
     list.forEach((taskObj) => {
+      const taskPosition = list.indexOf(taskObj);
       const taskCard = document.createElement("div");
       taskCard.classList.toggle("taskCard");
       taskHolder.append(taskCard);
@@ -32,6 +33,28 @@ const taskDisplayController = () => {
       } else {
         taskCard.setAttribute("style", "border-right: 5px solid green");
       }
+
+      const showMoreBtn = document.createElement("button");
+      showMoreBtn.classList.toggle("showMoreButton");
+      showMoreBtn.dataset.showMore = taskPosition;
+      showMoreBtn.textContent = "Show More";
+      taskCard.append(showMoreBtn);
+      showMoreBtn.addEventListener("click", () => {
+        const taskModal = document.querySelector(".taskDisplayModal");
+        taskModal.showModal();
+        const taskTitle = document.querySelector(".taskTitle");
+        taskTitle.textContent = Object.values(taskObj)[0];
+        const taskDescription = document.querySelector(".taskDescription");
+        taskDescription.textContent = Object.values(taskObj)[1];
+        const taskDueDate = document.querySelector(".taskDueDate");
+        taskDueDate.textContent = Object.values(taskObj)[2];
+        const taskNotes = document.querySelector(".taskNotes");
+        taskNotes.textContent = Object.values(taskObj)[4];
+
+        const removeBtn = document.querySelector(".removeBook");
+        removeBtn.dataset.remove = taskPosition;
+        removeBtn.addEventListener("click", removeTaskHandler);
+      });
     });
     const addNewTask = document.createElement("button");
     addNewTask.textContent = "Add Task";
@@ -41,6 +64,7 @@ const taskDisplayController = () => {
     addNewTask.addEventListener("click", addNewTaskHandler);
     return { currentDisplayProject };
   };
+
   const taskFormModal = document.querySelector(".taskFormHolder");
   const addNewTaskHandler = () => {
     taskFormModal.showModal();
@@ -55,9 +79,7 @@ const taskDisplayController = () => {
       priority: taskForm.elements["userPriority"].value,
       notes: taskForm.elements["userNotes"].value,
     };
-
     const addNewTask = document.querySelector(".newTaskButton");
-
     let project = addNewTask.dataset.project;
 
     myNewList.addTaskToProject(taskFormData, project);
@@ -65,6 +87,17 @@ const taskDisplayController = () => {
     taskFormModal.close();
     taskDisplayer(project);
   };
+  function removeTaskHandler() {
+    const taskModal = document.querySelector(".taskDisplayModal");
+    const addNewTask = document.querySelector(".newTaskButton");
+    let projectPosition = addNewTask.dataset.project;
+    let taskPosition = this.dataset.remove;
+    console.log(taskPosition);
+    myNewList.removeTaskFromProject(taskPosition, projectPosition);
+    taskModal.close();
+    taskDisplayer(projectPosition);
+  }
+
   taskForm.addEventListener("submit", taskFormHandler);
 
   return { myNewList, taskDisplayer };
